@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container-fluid banner my-3">
+    {% if category %}
+    <h2 class="text-center cat_name mt-5 pt-3">{{category.name}}</h2>
+    <div class="row  mx-3 mt-3 rounded-2">
+        <div class="col-12 banner_image bg-dark rounded-2">
+            <img src="{{category.image.url}}" alt="no image" class="rounded-2">
+        </div>
+        <div class="col-12 mx-auto rounded-2 bg-light mt-1 text-center">{{category.desc}}</div>
+    </div>
+    {% else %}
+    <h2 class="text-center cat_name mt-5 pt-3">All products</h2>
+    <div class="row bg-primary mx-3 mt-3 rounded-2">
+        <div class="col-12 banner_image bg-dark rounded-2">
+            <img src="{% static './img/phones5.jpg' %}" alt="no image" class="rounded-2">
+        </div>
+    </div>
+    {% endif %}
+</div>
+
+<h3 class="ms-3 text-center ">Products</h3>
+<div class="row mx-2 my-2 d-flex justify-content-center">
+    {% for i in products %}
+    {% if i.available %}
+    <div class="col-12 col-sm-6 col-lg-2 px-1 mb-1">
+        <a href="{% url 'phones:detail' i.id  %}" class="text-decoration-none text-dark">
+            <div class="card  ms-1 ">
+                <div class="card__images"><img src="{{ i.image.url }}" class="card-img-top mx-auto " alt="..."></div>
+                <div class=" card-body">
+                    <h5 class="card-title ">{{i.name}}</h5>
+                    <p class="card-text">${{i.price}}</p>
+                </div>
+            </div>
+        </a>
+    </div>
+    {% endif %}
+    {% endfor %}
+</div>
+<!-- Paginator -->
+
+<div class="paginator mx-auto">
+    {% if products.paginator.num_pages > 1 %}
+    <hr>
+    <div class="text-center">
+        {% for pag in products.paginator.page_range %}
+        <a href="?page={{pag}}"
+            class="btn btn-light btn-sm {% if products.number == pag %} active {% endif %}">{{pag}}</a>
+        {% endfor%}
+    </div>
+    {% endif %}
+</div>
+
+{% endblock %}

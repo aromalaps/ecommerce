@@ -1,0 +1,67 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark position-fixed top-0 w-100">
+    <div class="container-fluid navbar-container ms-3 ">
+        <a class="navbar-brand" href="{% url 'phones:Home' %}">
+            <img src="{% static './img/flipkart.png' %}" alt="Your Logo" width="100" height="30"
+                class="d-inline-block align-top">
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <!-- search bar  -->
+
+            <form class="d-flex" action="{% url 'search:search'  %}" role="search" method="GET">
+
+                <input class="form-control me-2 w-75" type="search" name="q" placeholder="Search" aria-label="Search">
+
+            </form>
+
+            <!-- end search -->
+            <ul class="navbar-nav ms-auto">
+                <li class="nav-item active">
+                    <a class="nav-link" href="{% url 'phones:Home' %}">Home <span
+                            class="visually-hidden">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Contact</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                        data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Category
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'phones:Home' %}">All Products</a>
+                        {% for i in links %}
+                        <a class="dropdown-item" href="{{i.get_url}}">{{i.name}}</a>
+                        {% endfor %}
+                    </div>
+
+                </li>
+                <!-- Add Login, Logout, and Signup buttons with Bootstrap classes -->
+                {% if user.is_authenticated %}
+                <span class="text-danger">{{user}}</span>
+                <li class="nav-item">
+
+                    <a class="nav-link btn ms-1 btn-primary text-light" href="{% url 'auth:logout' %}">Logout</a>
+                </li>
+
+                {% else %}
+
+                <li class="nav-item">
+                    <a class="nav-link btn ms-1 btn-primary text-light" href="{% url 'auth:login' %}">Login</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn ms-1 btn-success text-light" href="{% url 'auth:register' %}">Signup</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</nav>

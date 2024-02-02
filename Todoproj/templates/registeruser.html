@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container my-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card w-100">
+                <div class="card-body">
+                    <h2 class="card-title mb-4">Register</h2>
+                    <form action="" method="post">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="firstName" id="firstName" name="fname"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" id="lastName" placeholder="last name" name="lname"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="email" class="form-control" id="email" placeholder="email" name="email"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" placeholder="username" id="username" name="username"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="password" class="form-control" placeholder="password" id="password"
+                                name="password" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="password" class="form-control" id="confirmPassword"
+                                placeholder="confirmpassword" name="cPassword" required>
+                        </div>
+
+                        <div>
+                            <button type="submit" class="btn btn-primary">Register</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

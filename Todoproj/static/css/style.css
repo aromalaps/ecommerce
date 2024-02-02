@@ -1,0 +1,62 @@
+body {
+    overflow-x: hidden !important;
+}
+
+nav {
+    z-index: 66 !important;
+}
+
+.card__images {
+
+    width: 200px;
+    height: 200px;
+}
+
+.card__images>img {
+    background-size: cover !important;
+
+    width: auto;
+    height: 200px;
+}
+
+.text-decoration-none>.card {
+
+    align-items: center !important;
+    text-align: center !important;
+}
+
+.card_detaill {
+    width: 40vw !important;
+}
+
+/* .navbar-container {
+    margin-left: 100px !important;
+} */
+/* banner */
+/* body {
+    width: 100vw !important;
+    overflow-x: hidden !important;
+} */
+
+.bannertask {
+    width: 100vw !important;
+
+}
+
+.banner_image {
+    width: 100vw !important;
+    height: 50vh !important;
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.banner_image>img {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.cat_name {
+    font-style: OCR A Std, monospace !important;
+    font-family: American Typewriter, serif !important;
+
+}
