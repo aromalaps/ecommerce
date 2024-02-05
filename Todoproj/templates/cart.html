@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="col mt-5 pt-5">
+    {% for i in cart %}
+    <h1 class="pt-5 mt-1">{{i.product}}</h1>
+    {% endfor %}
+</div>
+
+{% endblock %}

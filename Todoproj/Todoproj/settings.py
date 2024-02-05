@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'Todoapp',
     'userapp',
     'searchapp',
+    'cart',
 ]
 
 MIDDLEWARE = [
