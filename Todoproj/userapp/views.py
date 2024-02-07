@@ -15,6 +15,7 @@ def registerUser(req):
         cpassword=req.POST.get("cpassword","")
         print(fname,lname,email,username,password,cpassword)
         if password==cpassword:
+            print("password verified")
             if User.objects.filter(username=username).exists():
                 messages.info(req,"username already exist")
                 return redirect('auth:register')
