@@ -48,7 +48,10 @@
                 {% if user.is_authenticated %}
                 <span class="text-danger">{{user}}</span>
                 <li class="nav-item">
-
+                    <a class="nav-link btn ms-1 btn-warning text-light"
+                        href="{% url 'cart_page:displaycart' %}">Cart</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link btn ms-1 btn-primary text-light" href="{% url 'auth:logout' %}">Logout</a>
                 </li>
 

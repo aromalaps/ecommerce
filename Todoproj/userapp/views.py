@@ -50,4 +50,5 @@ def loginUser(req):
 
 def logoutUser(req):
     auth.logout(req)
+    req.session.pop('user',None)
     return redirect("phones:Home")
