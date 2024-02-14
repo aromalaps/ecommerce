@@ -1,0 +1,78 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="container-fluid mx-0 mt-5 ">
+    <div class="main pt-4 cart_cart mx-2 mx-md-4 ">
+        <div class="container-fluid cart_page">
+            <div class="row cart_row ">
+                <div class="col-12 col-lg-9 cart_col1">
+                    <div class="row rowax bg-light mb-1 p-3  me-0 me-md-1">From Saved Addresses</div>
+                    {% for i in cart %}
+                    <div class="row rowbx bg-light pb-2 me-0 me-md-1">
+
+                        <div class="col-1">
+                            <img class=" py-3 " src="{{ i.product.image.url }}" width="140px" alt="no img">
+                        </div>
+                        <div class="col-12 col-lg-10 detail_cart_p ms-lg-5  mt-lg-3  ps-lg-5">
+                            <p class="fw-bold">{{i.product}}</p>
+                            <p>Brand : {{i.product.category}}</p>
+                            <p class="disabled px-0 ">Seller : FlipKart</p>
+                            <p class="fw-bold px-0 ">${{i.product.price}}</p>
+                            <!-- <p class=" px-0 ">stock :{{i.product.stock}}</p> -->
+                            <p>Total Amount :<span class="fw-bolder"> ${{i.total}}</span></p>
+                        </div>
+
+                        <div class="col-10 rowbaa">
+                            <a href="{% url 'cart_page:removecart' i.product.id %}" type="button"
+                                class="btn text-dark fw-bold btn-circle btn-outline-secondary  btn-md ">-</a>
+                            <input class="quantity text-center  ps-sm-3" type="number" max="{{i.product.stock}}"
+                                value="{{ i.quantity }}">
+
+                            <a href="{% url 'cart_page:addcart' i.product.id %}" type="button"
+                                class="btn text-dark fw-bold btn-circle btn-outline-secondary  btn-md me-3">+
+                            </a>
+
+
+                            <a type="button"
+                                class="btn btn-light ms-md-3 fw-bolder text-dark btn-outline-secondary rounded-0">BUY
+                                NOW
+                            </a>
+
+                            <a href="{% url 'cart_page:fullremove' i.product.id %}" type="button"
+                                class="btn btn-light ms-1 mt-md-0 fw-bolder  text-dark btn-outline-secondary mt-2 rounded-0">REMOVE</a>
+                        </div>
+                    </div>
+
+                    {% endfor %}
+
+                    <div class="row  rowex bg-light mb-1 p-3  me-0 me-md-1 d-flex  justify-content-end">
+
+                        <a href="{% url 'cart_page:clear_cart' %}" type="button"
+                            class="btn rounded-0 cart_clear ms-1 fw-bolder ">CLEAR CART</a>
+
+                        <a href="{% url 'cart_page:place_order' %}" type="button"
+                            class="btn rounded-0 place_order ms-1 fw-bolder mt-md-0 mt-2">PLACE ORDER</a>
+
+                        <a href="{% url 'phones:Home'  %}" type="button"
+                            class="btn rounded-0 place_order bg-light text-dark ms-1 fw-bolder ">Continue
+                            Shopping</a>
+                    </div>
+
+                </div>
+                <div class="col-12 col-lg-3 cart_col2 bg-light">
+                    <div class="row rowcx bg-light p-3">PRICE DETAILS</div>
+                    <hr class="hr p-0 m-0 w-100">
+                    <div class="row rowdx bg-light">
+                        <p class="ps-3 price_details_p pb-2">price</p>
+                        <p class="ps-3 price_details_p pb-2">Discount</p>
+                        <p class="pb-1 price_details_p ps-3">Delivery Charges</p>
+                        <p class="pt-1 price_details_p pb-2 ps-3 fw-semibold">Grand total: ${{ grand_total }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
